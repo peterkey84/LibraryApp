@@ -1,12 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LibraryApp.Entities;
+using LibraryApp.Servicies.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryApp.Controllers
 {
-    public class AuthorController : Controller
+    [Route("api/[controller]s")]
+    [ApiController]
+    public class AuthorController : ControllerBase
     {
-        public IActionResult Index()
+
+        private readonly IAuthorService _authorService;
+        public AuthorController(IAuthorService authorService)
         {
-            return View();
+            _authorService = authorService;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<Author>> GetAllAuthors()
+        {
+
+            return await _authorService.GetAllAsync();
+
         }
     }
 }

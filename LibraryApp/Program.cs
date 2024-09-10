@@ -1,10 +1,13 @@
 using LibraryApp.DAL;
+using LibraryApp.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<LibraryDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnetion")));
+
+builder.Services.AddDependencyInjection();
 
 // Add services to the container.
 

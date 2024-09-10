@@ -21,10 +21,6 @@
     <Folder Include="DTOs\BookDTO\" />
     <Folder Include="DTOs\UserDTO\" />
     <Folder Include="Middleware\" />
-    <Folder Include="Repositories\Infrastructure\" />
-    <Folder Include="Repositories\Interfaces\" />
-    <Folder Include="Servicies\Interfaces\" />
-    <Folder Include="Servicies\Infrastructure\" />
   </ItemGroup>
 
 </Project>
