@@ -1,5 +1,6 @@
 ﻿using LibraryApp.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace LibraryApp.DAL
 {
@@ -12,5 +13,15 @@ namespace LibraryApp.DAL
         public DbSet<Book> Books { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<BookCopy> BookCopies { get; set; }
+
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        }
+
     }
+
 }
