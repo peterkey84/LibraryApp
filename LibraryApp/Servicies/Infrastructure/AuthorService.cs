@@ -13,5 +13,15 @@ namespace LibraryApp.Servicies.Infrastructure
             _authorRepository = authorRepository;
 
         }
+
+        public async Task<Author> FindAuthorByPhraseAsync(string keyword)
+        {
+            return await _authorRepository.FindAuthorByPhrase(keyword);
+        }
+
+        public Task<IEnumerable<Book>> GetAllBooksFromAuthorAsync(int id)
+        {
+           return _authorRepository.GetAllBooksFromAuthor(id);
+        }
     }
 }
