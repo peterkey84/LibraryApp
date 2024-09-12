@@ -1,12 +1,57 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LibraryApp.Entities;
+using LibraryApp.Servicies.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryApp.Controllers
 {
-    public class BookController : Controller
+    [Route("api/[controller]s")]
+    [ApiController]
+    public class BookController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly IBookService _bookService;
+
+        public BookController(IBookService bookServic)
         {
-            return View();
+            _bookService = bookServic;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<Book>> GetAllBooksAsync()
+        {
+            return await _bookService.GetAllAsync();
+        }
+
+        [HttpGet("id")]
+        public async Task<Book> GetBookByIdAsync(int id)
+        {
+            return await _bookService.GetByIdAsync(id);
+        }
+
+        [HttpDelete("id")]
+        public async Task DeleteBookAsync(int id)
+        {
+            await _bookService.DeleteAsync(id);
+        }
+
+        [HttpPost]
+        public async Task AddBookAsync(Book book)
+        {
+            await _bookService.AddAsync(book);
+        }
+
+        [HttpPut]
+        public async Task UpdateBookAsync(Book book)
+        {
+            await _bookService.UpdateAsync(book);
+        }
+
+        [HttpGet("availability")]
+        public async Task<IEnumerable<Book>> GetAvailabilityBooks()
+        {
+            var aaa =  await _bookService.GetAvailabilityBooks();
+
+
+            return aaa;
         }
     }
 }

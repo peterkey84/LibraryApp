@@ -12,5 +12,10 @@ namespace LibraryApp.Servicies.Infrastructure
         {
             _bookRepository = bookRepository;
         }
+
+        public Task<IEnumerable<Book>> GetAvailabilityBooks()
+        {
+            return _bookRepository.GetAvailabilityBooks();
+        }
     }
 }
