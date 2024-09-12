@@ -4,6 +4,7 @@ using LibraryApp.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryApp.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    partial class LibraryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240912185519_SeedForBookCopy")]
+    partial class SeedForBookCopy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -291,71 +294,6 @@ namespace LibraryApp.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Rentals");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BookCopyId = 1,
-                            DateOfLoan = new DateTime(2024, 9, 12, 20, 56, 18, 333, DateTimeKind.Local).AddTicks(7827),
-                            DateOfReturn = new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Fees = 0m,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            BookCopyId = 1,
-                            DateOfLoan = new DateTime(2024, 9, 12, 20, 56, 18, 333, DateTimeKind.Local).AddTicks(7922),
-                            DateOfReturn = new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Fees = 0m,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            BookCopyId = 1,
-                            DateOfLoan = new DateTime(2024, 9, 12, 20, 56, 18, 333, DateTimeKind.Local).AddTicks(7924),
-                            DateOfReturn = new DateTime(2024, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Fees = 0m,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            BookCopyId = 1,
-                            DateOfLoan = new DateTime(2024, 9, 12, 20, 56, 18, 333, DateTimeKind.Local).AddTicks(7926),
-                            DateOfReturn = new DateTime(2024, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Fees = 0m,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            BookCopyId = 1,
-                            DateOfLoan = new DateTime(2024, 9, 12, 20, 56, 18, 333, DateTimeKind.Local).AddTicks(7929),
-                            DateOfReturn = new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Fees = 0m,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 6,
-                            BookCopyId = 1,
-                            DateOfLoan = new DateTime(2024, 9, 12, 20, 56, 18, 333, DateTimeKind.Local).AddTicks(7931),
-                            DateOfReturn = new DateTime(2024, 10, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Fees = 0m,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            BookCopyId = 1,
-                            DateOfLoan = new DateTime(2024, 9, 12, 20, 56, 18, 333, DateTimeKind.Local).AddTicks(7933),
-                            DateOfReturn = new DateTime(2024, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Fees = 0m,
-                            UserId = 2
-                        });
                 });
 
             modelBuilder.Entity("LibraryApp.Entities.User", b =>
