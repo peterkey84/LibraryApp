@@ -1,4 +1,6 @@
-﻿using LibraryApp.Entities;
+﻿using LibraryApp.DTOs.BookDTO;
+using LibraryApp.DTOs.ReviewDTO;
+using LibraryApp.Entities;
 using LibraryApp.Servicies.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -46,12 +48,27 @@ namespace LibraryApp.Controllers
         }
 
         [HttpGet("availability")]
-        public async Task<IEnumerable<Book>> GetAvailabilityBooks()
+        public async Task<IEnumerable<BookViewDto>> GetAvailabilityBooks()
         {
-            var aaa =  await _bookService.GetAvailabilityBooks();
-
-
-            return aaa;
+            return await _bookService.GetAvailabilityBooks();
+            
         }
+
+        [HttpPost("new-copies/{id}")]
+        public async Task AddCopieOfBookByIdAsync(int id)
+        {
+            await _bookService.AddCopieOfBookById(id);
+        }
+
+        [HttpGet("{id}/reviews")]
+        public async Task<IEnumerable<ReviewDto>> GetReviewsOfBookById(int id)
+        {
+            return await _bookService.GetReviewsOfBookById(id);
+        }
+
+        //TODO HttpPost, HttpPut i HttpDelete do reviews.
+
+
+
     }
 }

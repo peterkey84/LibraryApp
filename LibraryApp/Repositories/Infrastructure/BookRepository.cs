@@ -18,9 +18,35 @@ namespace LibraryApp.Repositories.Infrastructure
         public async Task<IEnumerable<Book>> GetAvailabilityBooks()
         {
 
-            return  await _dbContext.Books.Include(b => b.bookCopies)
+            return  await _dbContext.Books
+                .Include(a=>a.Author)
+                .Include(b => b.bookCopies)
                 .Where(a => a.bookCopies.Sum (bc=>bc.Quantity) > 0)
                 .ToListAsync();
+            ;
+        }
+
+        public async Task AddCopieOfBookById(int id)
+        {
+            var bookCopy = await _dbContext.BookCopies.Where(c=>c.BookId == id).FirstOrDefaultAsync();
+
+            if(bookCopy != null)
+            {
+                bookCopy.Quantity += 1;
+                
+                await _dbContext.SaveChangesAsync();
+            }
+
+        }
+
+        public async Task<IEnumerable<Review>> GetReviewsOfBookById(int id)
+        {
+
+            return await _dbContext.Reviews
+                .Include(b => b.Book)
+                .Where(r => r.BookId == id).ToListAsync();
+
+
 
         }
     }

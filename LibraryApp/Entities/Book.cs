@@ -9,7 +9,7 @@
         public Author Author { get; set; }
         public int AuthorId { get; set; }
         public ICollection<BookCopy> bookCopies { get; set; }
-        
+        public ICollection<Review> reviews { get; set; }
 
     }
 }

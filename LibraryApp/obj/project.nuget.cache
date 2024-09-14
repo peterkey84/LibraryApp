@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "E5IjTZrbIiY896lkWTFcihEFQ0h3dhaj96Gn9HfAGWODFOcw22mgc2Th6j8Gg9UNnS6RYguB8h99BbeBsxlpTQ==",
+  "dgSpecHash": "KcXMHql4/aeLPZcOeJokZC+5W87t+/DhQF0R4pd3rBKYtPqCo6aHiHmU1itImULBaJ250YcNLCsILHG9mM1XXA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Piotr\\source\\repos\\LibraryApp\\LibraryApp\\LibraryApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Piotr\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Piotr\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Piotr\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\Piotr\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
