@@ -12,5 +12,21 @@ namespace LibraryApp.Servicies.Infrastructure
         {
             _userRepository = userRepository;
         }
+
+        public async Task<IEnumerable<Rental>> GetHistoryOfRentaledBooksOfUserByIdAsync(int id)
+        {
+            return await _userRepository.GetHistoryOfRentaledBooksOfUserByIdAsync(id);
+        }
+
+
+        public async Task<IEnumerable<Rental>> GetAllActiveRentaledBookOfUserByIdAsync(int id)
+        {
+            return await _userRepository.GetAllActiveRentaledBookOfUserByIdAsync(id);
+        }
+
+        public async Task ExtendRentalBookofUserByIdAsync(int id, DateTime dateOfReturn)
+        {
+            await _userRepository.ExtendRentalBookofUserByIdAsync(id, dateOfReturn);
+        }
     }
 }

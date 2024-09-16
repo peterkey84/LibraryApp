@@ -44,5 +44,23 @@ namespace LibraryApp.Controllers
         {
             await _userService.UpdateAsync(user);
         }
+
+        [HttpGet("{id}/rentals")]
+        public async Task<IEnumerable<Rental>> GetHistoryOfRentaledBooksOfUserByIdAsync(int id)
+        {
+            return await _userService.GetHistoryOfRentaledBooksOfUserByIdAsync(id);
+        }
+
+        [HttpGet("{id}/active-rentals")]
+        public async Task<IEnumerable<Rental>> GetAllActiveRentaledBookOfUserByIdAsync(int id)
+        {
+            return await _userService.GetAllActiveRentaledBookOfUserByIdAsync(id);
+        }
+
+        [HttpPost("rentals/{id}/extend/{dateOfReturn}")]
+        public async Task ExtendRentalBookofUserByIdAsync(int id, DateTime dateOfReturn)
+        {
+            await _userService.ExtendRentalBookofUserByIdAsync(id, dateOfReturn);
+        }
     }
 }
