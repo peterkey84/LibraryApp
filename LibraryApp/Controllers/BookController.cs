@@ -51,7 +51,7 @@ namespace LibraryApp.Controllers
         public async Task<IEnumerable<BookViewDto>> GetAvailabilityBooks()
         {
             return await _bookService.GetAvailabilityBooks();
-            
+
         }
 
         [HttpPost("new-copies/{id}")]
@@ -66,7 +66,7 @@ namespace LibraryApp.Controllers
             return await _bookService.GetReviewsOfBookById(id);
         }
 
-        //TODO HttpPost, HttpPut i HttpDelete do reviews.
+        //TODO HttpPost, HttpPut i HttpDelete do Reviews.
 
 
 

@@ -16,9 +16,9 @@ namespace LibraryApp.AutoMapper
 
         private void BookMapping()
         {
-            CreateMap<Book, BookViewDto>()
-                .ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.Author.FirstName + " " + src.Author.LastName))
-                .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.bookCopies.Sum(bc => bc.Quantity)));
+            CreateMap<Book, BookViewDto>();
+                //.ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.Author.FirstName + " " + src.Author.LastName))
+                //.ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.BookCopies.Sum(bc => bc.Quantity)));
 
             CreateMap<BookViewDto, Book>();
 

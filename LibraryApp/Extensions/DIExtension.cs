@@ -1,4 +1,5 @@
-﻿using LibraryApp.Entities;
+﻿using LibraryApp.EanGenertor;
+using LibraryApp.Entities;
 using LibraryApp.Repositories.Infrastructure;
 using LibraryApp.Repositories.Interfaces;
 using LibraryApp.Servicies.Infrastructure;
@@ -28,7 +29,7 @@ namespace LibraryApp.Extensions
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRentalService, RentalService>();
 
-
+            services.AddScoped<EanGenerator>();
         }
     }
 }

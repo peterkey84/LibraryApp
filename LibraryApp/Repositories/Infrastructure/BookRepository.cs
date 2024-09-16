@@ -1,4 +1,5 @@
 ﻿using LibraryApp.DAL;
+using LibraryApp.EanGenertor;
 using LibraryApp.Entities;
 using LibraryApp.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -9,31 +10,41 @@ namespace LibraryApp.Repositories.Infrastructure
     {
 
         private readonly LibraryDbContext _dbContext;
+        private readonly EanGenerator _eanGenertor;
 
-        public BookRepository(LibraryDbContext dbContext) : base(dbContext)
+
+        public BookRepository(LibraryDbContext dbContext, EanGenerator eanGenerator) : base(dbContext)
         {
             _dbContext = dbContext;
+            _eanGenertor = eanGenerator;
+
         }
 
         public async Task<IEnumerable<Book>> GetAvailabilityBooks()
         {
-
-            return  await _dbContext.Books
-                .Include(a=>a.Author)
-                .Include(b => b.bookCopies)
-                .Where(a => a.bookCopies.Sum (bc=>bc.Quantity) > 0)
+            return await _dbContext.Books
+                .Include(a => a.Author)
+                .Include(b => b.BookCopies)
+                .Where(a => a.BookCopies.Any(a => a.IsAvailable))
                 .ToListAsync();
-            ;
+
+            
         }
 
         public async Task AddCopieOfBookById(int id)
         {
-            var bookCopy = await _dbContext.BookCopies.Where(c=>c.BookId == id).FirstOrDefaultAsync();
 
-            if(bookCopy != null)
+            var newCopy = new BookCopy();
+            var book = await _dbContext.Books.Where(c => c.Id == id).FirstOrDefaultAsync();
+
+            if (book != null)
             {
-                bookCopy.Quantity += 1;
-                
+                newCopy.EAN = _eanGenertor.GenerateEan();
+                newCopy.IsAvailable = true;
+                newCopy.BookId = book.Id;
+
+                await _dbContext.BookCopies.AddAsync(newCopy);
+
                 await _dbContext.SaveChangesAsync();
             }
 

@@ -1,4 +1,6 @@
-﻿namespace LibraryApp.Entities
+﻿using LibraryApp.Enums;
+
+namespace LibraryApp.Entities
 {
     public class BookCopy
     {
@@ -6,7 +8,9 @@
         public string EAN { get; set; }
         public Book Book { get; set; }
         public int BookId { get; set; }
-        public int Quantity { get; set; }
-        ICollection<Rental> rentals { get; set; }
+        public bool IsAvailable { get; set; }
+        public BookStatus Status { get; set; }
+        public string? RepairComment { get; set; }
+        ICollection<Rental> Rentals { get; set; }
     }
 }

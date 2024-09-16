@@ -8,8 +8,8 @@
         public string Description { get; set; }
         public Author Author { get; set; }
         public int AuthorId { get; set; }
-        public ICollection<BookCopy> bookCopies { get; set; }
-        public ICollection<Review> reviews { get; set; }
+        public ICollection<BookCopy> BookCopies { get; set; }
+        public ICollection<Review> Reviews { get; set; }
 
     }
 }

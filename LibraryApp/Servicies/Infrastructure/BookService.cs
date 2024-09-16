@@ -24,12 +24,10 @@ namespace LibraryApp.Servicies.Infrastructure
 
             IEnumerable<BookViewDto> result = _mapper.Map<IEnumerable<BookViewDto>>(books);
 
-            var authorId = books.Select(c => c.AuthorId);
-
-            
-
             return result;
+
         }
+
 
         public async Task AddCopieOfBookById(int id)
         {
@@ -46,4 +44,5 @@ namespace LibraryApp.Servicies.Infrastructure
 
         }
     }
-}
+
+}    
