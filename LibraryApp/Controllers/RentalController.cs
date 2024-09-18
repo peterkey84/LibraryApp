@@ -45,5 +45,17 @@ namespace LibraryApp.Controllers
         {
             await _rentalService.UpdateAsync(rental);
         }
+
+        [HttpPut("{rentalId}/extend/{newDateOfReturn}")]
+        public async Task ExtendDateOfReturnBookByRentalIdAsync(int rentalId, DateTime newDateOfReturn)
+        {
+            await _rentalService.ExtendDateOfReturnBookByRentalId(rentalId, newDateOfReturn);
+        }
+
+        [HttpDelete("{rentalId}/cancel")]
+        public async Task DeleteRentalByRentalId(int rentalId)
+        {
+            await _rentalService.DeleteRentalByRentalId(rentalId);
+        }
     }
 }

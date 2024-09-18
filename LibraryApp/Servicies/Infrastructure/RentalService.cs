@@ -13,5 +13,15 @@ namespace LibraryApp.Servicies.Infrastructure
         {
             _rentalRepository = rentalRepository;
         }
+
+        public async Task DeleteRentalByRentalId(int rentalId)
+        {
+            await _rentalRepository.DeleteRentalByRentalId(rentalId);
+        }
+
+        public async Task ExtendDateOfReturnBookByRentalId(int id, DateTime newDateOfReturn)
+        {
+            await _rentalRepository.ExtendDateOfReturnBookByRentalId(id, newDateOfReturn);
+        }
     }
 }
