@@ -8,6 +8,8 @@ namespace LibraryApp.Repositories.Interfaces
         Task<IEnumerable<Book>> GetAvailabilityBooks();
         Task AddCopieOfBookById(int id);
         Task<IEnumerable<Review>> GetReviewsOfBookById(int id);
+        Task UpdateStatusOnRepairOfBookCopyById(int bookId, int bookCopyId);
+
 
     }
 }

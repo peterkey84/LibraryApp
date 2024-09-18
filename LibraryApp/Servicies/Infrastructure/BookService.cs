@@ -43,6 +43,11 @@ namespace LibraryApp.Servicies.Infrastructure
             return reviewDtos;
 
         }
+
+        public async Task UpdateStatusOnRepairOfBookCopyById(int bookId, int bookCopyId)
+        {
+            await _bookRepository.UpdateStatusOnRepairOfBookCopyById(bookId, bookCopyId);
+        }
     }
 
 }    

@@ -51,24 +51,28 @@ namespace LibraryApp.Controllers
         public async Task<IEnumerable<BookViewDto>> GetAvailabilityBooks()
         {
             return await _bookService.GetAvailabilityBooks();
-
+            //TODO dodać ilość dostepnych książek
         }
 
-        [HttpPost("new-copies/{id}")]
-        public async Task AddCopieOfBookByIdAsync(int id)
+        [HttpPost("new-copies/{bookId}")]
+        public async Task AddCopieOfBookByIdAsync(int bookId)
         {
-            await _bookService.AddCopieOfBookById(id);
+            await _bookService.AddCopieOfBookById(bookId);
         }
 
-        [HttpGet("{id}/reviews")]
-        public async Task<IEnumerable<ReviewDto>> GetReviewsOfBookById(int id)
+        [HttpGet("{bookId}/reviews")]
+        public async Task<IEnumerable<ReviewDto>> GetReviewsOfBookById(int bookId)
         {
-            return await _bookService.GetReviewsOfBookById(id);
+            return await _bookService.GetReviewsOfBookById(bookId);
         }
 
         //TODO HttpPost, HttpPut i HttpDelete do Reviews.
 
-
+        [HttpPut("{bookId}/bookCopies/{bookCopieId}/repair")]
+        public async Task UpdateStatusOnRepairOfBookCopyById(int bookId, int bookCopieId)
+        {
+            await _bookService.UpdateStatusOnRepairOfBookCopyById(bookId, bookCopieId);
+        }
 
     }
 }

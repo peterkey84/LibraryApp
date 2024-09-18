@@ -10,7 +10,7 @@ namespace LibraryApp.Servicies.Interfaces
         Task<IEnumerable<BookViewDto>> GetAvailabilityBooks();
         Task AddCopieOfBookById(int id);
         Task<IEnumerable<ReviewDto>> GetReviewsOfBookById(int id);
-
+        Task UpdateStatusOnRepairOfBookCopyById(int bookId, int bookCopyId);
 
     }
 }

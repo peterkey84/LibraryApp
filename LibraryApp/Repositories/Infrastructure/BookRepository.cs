@@ -60,5 +60,19 @@ namespace LibraryApp.Repositories.Infrastructure
 
 
         }
+
+        public async Task UpdateStatusOnRepairOfBookCopyById(int bookId, int bookCopyId)
+        {
+
+            var bookCopyToUpdate = await _dbContext.BookCopies.Where(b => b.BookId == bookId && b.Id == bookCopyId).FirstOrDefaultAsync();
+
+            if(bookCopyToUpdate != null)
+            {
+                bookCopyToUpdate.Status = Enums.BookStatus.InRepair;
+
+                await _dbContext.SaveChangesAsync();
+            }
+
+        }
     }
 }
