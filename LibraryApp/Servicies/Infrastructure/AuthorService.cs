@@ -14,7 +14,7 @@ namespace LibraryApp.Servicies.Infrastructure
 
         }
 
-        public async Task<Author> FindAuthorByPhraseAsync(string keyword)
+        public async Task<IEnumerable<Author>> FindAuthorByPhraseAsync(string keyword)
         {
             return await _authorRepository.FindAuthorByPhrase(keyword);
         }

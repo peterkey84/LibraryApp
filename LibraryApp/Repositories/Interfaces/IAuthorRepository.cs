@@ -6,7 +6,7 @@ namespace LibraryApp.Repositories.Interfaces
     {
 
         Task<IEnumerable<Book>> GetAllBooksFromAuthor(int id);
-        Task<Author> FindAuthorByPhrase(string keyword);
+        Task<IEnumerable<Author>> FindAuthorByPhrase(string keyword);
 
     }
 }

@@ -23,7 +23,7 @@ namespace LibraryApp.Repositories.Infrastructure
 
         }
 
-        public async Task<Author> FindAuthorByPhrase(string keyword)
+        public async Task<IEnumerable<Author>> FindAuthorByPhrase(string keyword)
         {
 
             var authors = await _dbContext.Authors
@@ -31,7 +31,7 @@ namespace LibraryApp.Repositories.Infrastructure
                 f.LastName.Contains(keyword)
                 ).ToListAsync();
 
-            return authors.FirstOrDefault();
+            return authors;
 
         }
     }

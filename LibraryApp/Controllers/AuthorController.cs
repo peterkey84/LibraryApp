@@ -48,15 +48,15 @@ namespace LibraryApp.Controllers
         }
 
 
-        [HttpGet("books-of-author/{id}")]
-        public async Task<IEnumerable<Book>> GetAllBooksFromAuthor(int id)
+        [HttpGet("{authorId}/books")]
+        public async Task<IEnumerable<Book>> GetAllBooksFromAuthor(int authorId)
         {
-            return await _authorService.GetAllBooksFromAuthorAsync(id);
+            return await _authorService.GetAllBooksFromAuthorAsync(authorId);
 
         }
 
-        [HttpGet("by-phrase/(phrase)")]
-        public async Task<Author> FindAuthorByPhrase(string phrase)
+        [HttpGet("(phrase)")]
+        public async Task<IEnumerable<Author>> FindAuthorByPhrase(string phrase)
         {
             return await _authorService.FindAuthorByPhraseAsync(phrase);
         }

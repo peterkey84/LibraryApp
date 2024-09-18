@@ -6,7 +6,7 @@ namespace LibraryApp.Servicies.Interfaces
     {
 
         Task<IEnumerable<Book>> GetAllBooksFromAuthorAsync(int id);
-        Task<Author> FindAuthorByPhraseAsync(string keyword);
+        Task<IEnumerable<Author>> FindAuthorByPhraseAsync(string keyword);
 
 
     }
