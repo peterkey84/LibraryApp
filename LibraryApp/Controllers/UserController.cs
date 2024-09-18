@@ -45,22 +45,22 @@ namespace LibraryApp.Controllers
             await _userService.UpdateAsync(user);
         }
 
-        [HttpGet("{id}/rentals")]
-        public async Task<IEnumerable<Rental>> GetHistoryOfRentaledBooksOfUserByIdAsync(int id)
+        [HttpGet("{userId}/rentals")]
+        public async Task<IEnumerable<Rental>> GetHistoryOfRentaledBooksOfUserByIdAsync(int userId)
         {
-            return await _userService.GetHistoryOfRentaledBooksOfUserByIdAsync(id);
+            return await _userService.GetHistoryOfRentaledBooksOfUserByIdAsync(userId);
         }
 
-        [HttpGet("{id}/active-rentals")]
-        public async Task<IEnumerable<Rental>> GetAllActiveRentaledBookOfUserByIdAsync(int id)
+        [HttpGet("{userId}/active-rentals")]
+        public async Task<IEnumerable<Rental>> GetAllActiveRentaledBookOfUserByIdAsync(int userId)
         {
-            return await _userService.GetAllActiveRentaledBookOfUserByIdAsync(id);
+            return await _userService.GetAllActiveRentaledBookOfUserByIdAsync(userId);
         }
 
-        [HttpPost("rentals/{id}/extend/{dateOfReturn}")]
-        public async Task ExtendRentalBookofUserByIdAsync(int id, DateTime dateOfReturn)
+        [HttpPost("rentals/{userId}/extend/{dateOfReturn}")]
+        public async Task ExtendRentalBookofUserByIdAsync(int userId, DateTime dateOfReturn)
         {
-            await _userService.ExtendRentalBookofUserByIdAsync(id, dateOfReturn);
+            await _userService.ExtendRentalBookofUserByIdAsync(userId, dateOfReturn);
         }
     }
 }
